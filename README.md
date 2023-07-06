@@ -1,1 +1,1 @@
-My second month projects about shell permissions and modifications
+My second month project about linux shell scripting and modification
