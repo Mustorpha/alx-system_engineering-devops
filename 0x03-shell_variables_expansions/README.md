@@ -1,1 +1,1 @@
-shell alias and variables
+shell initialization
