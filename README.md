@@ -1,1 +1,1 @@
-My second month project about linux shell scripting and modification
+My alx shell scripting project programs
