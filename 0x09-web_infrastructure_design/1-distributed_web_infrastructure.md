@@ -47,4 +47,3 @@ In a Primary-Replica setup, the primary node handles writes and updates, while t
 
 3. **No Monitoring**: Without monitoring, it's difficult to detect issues or understand the system's performance.
 
-This is a basic setup and there are many ways to improve and expand it based on specific needs and constraints. For example, you might add more servers, use a CDN for static files, add firewalls for security, use auto-scaling, etc. I hope this helps! If you have any other questions, feel free to ask. 😊
