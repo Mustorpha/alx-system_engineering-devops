@@ -20,4 +20,4 @@ However, this infrastructure has some issues:
 
 - **Scalability Issues**: If there's too much incoming traffic, a single server may not be able to handle the load. This setup doesn't allow for easy scaling up (adding more resources to handle more traffic).
 
-This is a basic setup suitable for small applications. For larger, high-traffic applications, you'd want to consider a more robust infrastructure with multiple servers, load balancers, and more.
+This is a basic setup suitable for small applications. For larger, high-traffic applications, one may consider a more robust infrastructure with multiple servers, load balancers, and more.
