@@ -8,5 +8,6 @@ sudo apt-get -y install nginx
 sudo ufw allow 'Nginx HTTP'
 echo "Hello World!" > sudo /var/www/html/index.nginx-debian.html
 sed -i "/server_name _;/a \ \ \ \ \ \ \ \ rewrite ^/redirect_me https://github.com/mustorpha permanent;" /etc/nginx/sites-available/default
-sed -i "/server_name _;/a \ \ \ \ \ \ \ \ error_page 404 /usr/share/nginx/html/custom_404.html;" /etc/nginx/sites-available/default
+echo "Ceci n'est pas une page" > /var/www/html/404.html
+sed -i "/server_name _;/a \ \ \ \ \ \ \ \ error_page 404 /404.html;" /etc/nginx/sites-available/default
 sudo service nginx start
