@@ -1,13 +1,19 @@
 #!/usr/bin/env bash
 # Install nginx on web server; Nginx should be listening on port 80
 # redirects to another page
-# Having a custome 404 page
+# Having a custom 404 page
 
 sudo apt-get -y update
 sudo apt-get -y install nginx
+sudo ufw allow 'ssh'
+sudo ufw allow 'OpenSSH'
 sudo ufw allow 'Nginx HTTP'
-echo "Hello World!" > sudo /var/www/html/index.nginx-debian.html
-sed -i "/server_name _;/a \ \ \ \ \ \ \ \ rewrite ^/redirect_me https://github.com/mustorpha permanent;" /etc/nginx/sites-available/default
-echo "Ceci n'est pas une page" > /var/www/html/404.html
-sed -i "/server_name _;/a \ \ \ \ \ \ \ \ error_page 404 /404.html;" /etc/nginx/sites-available/default
-sudo service nginx start
+sudo ufw enable
+sudo chown -R $USER:$USER /var/www
+sudo echo "Hello World!" > /var/www/html/index.html
+sudo sed -i "/server_name _;/a \ \ \ \ \ \ \ \ rewrite ^/redirect_me https://github.com/mustorpha permanent;" /etc/nginx/sites-available/default
+sudo echo "Ceci n'est pas une page" > /var/www/html/404.html
+sudo sed -i "/server_name _;/a \ \ \ \ \ \ \ \ error_page 404 /404.html;" /etc/nginx/sites-available/default
+sudo service nginx restart
+sudo ufw status
+sudo service nginx status
