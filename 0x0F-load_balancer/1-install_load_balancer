@@ -15,9 +15,9 @@ echo "frontend  bigmuse-frontend
 backend bigmuse-backend
         balance roundrobin
         server 483547-web-01 100.27.11.204:80 check
-        server 483547-web-02 100.25.10.202:80 check
+        server 483547-web-02 3.85.41.254:80 check
 " >> /etc/haproxy/haproxy.cfg
-echo "ENABLED=1" >> sudo tee -a /etc/default/haproxy
+echo "ENABLED=1" >> /etc/default/haproxy
 sudo service haproxy restart
 sudo ufw enable
 sudo ufw status
