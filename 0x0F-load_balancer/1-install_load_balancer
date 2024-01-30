@@ -1,21 +1,23 @@
 #!/usr/bin/env bash
-# configures a new HAproxy as a load balancer
+# Install HAProxy for load balancing
 
-# Install HAproxy on a server
-apt-get -y update
-apt-get -y install haproxy=1.6.\*
-
-# Configure haproxy configuration file to distribute requests using a roundrobin algorithm
-echo '
-frontend sammykingx.tech
-        bind 0:80
-        default_backend web_servers
-
-backend web_servers
+sudo apt-get -y update
+sudo ufw allow 'ssh'
+sudo ufw allow 'OpenSSH'
+sudo apt-get -y install --no-install-recommends software-properties-common
+sudo add-apt-repository ppa:vbernat/haproxy-2.8
+apt-get -y install haproxy=2.8.\*
+sudo cp -a /etc/haproxy/haproxy.cfg{,.old}
+echo "frontend  bigmuse-frontend
+        bind *:80
+        mode http
+        default_backend bigmuse-backend
+backend bigmuse-backend
         balance roundrobin
-        server 64820-web-01 100.26.152.157:80
-        server 64820-web-02 52.86.102.6:80
-' >> /etc/haproxy/haproxy.cfg
-
-# Restart HAproxy service
-service haproxy restart
+        server 483547-web-01 100.27.11.204:80 check
+        server 483547-web-02 100.25.10.202:80 check
+" >> /etc/haproxy/haproxy.cfg
+echo "ENABLED=1" >> sudo tee -a /etc/default/haproxy
+sudo service haproxy restart
+sudo ufw enable
+sudo ufw status
