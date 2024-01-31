@@ -13,10 +13,11 @@ echo "frontend  bigmuse-frontend
         bind *:80
         mode http
         default_backend bigmuse-backend
+
 backend bigmuse-backend
         balance roundrobin
-        server 483547-web-01 100.27.11.204:80 check
-        server 483547-web-02 3.85.41.254:80 check
+        server web-01 100.27.11.204:80 check
+        server web-02 3.85.41.254:80 check
 " >> /etc/haproxy/haproxy.cfg
 sudo chown -R $USER:$USER /etc/default/haproxy/
 echo "ENABLED=1" >> /etc/default/haproxy
