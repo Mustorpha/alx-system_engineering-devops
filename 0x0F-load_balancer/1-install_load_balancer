@@ -19,7 +19,6 @@ backend bigmuse-backend
         server web-01 100.27.11.204:80 check
         server web-02 3.85.41.254:80 check
 " >> /etc/haproxy/haproxy.cfg
-sudo chown -R $USER:$USER /etc/default/haproxy/
 echo "ENABLED=1" >> /etc/default/haproxy
 sudo service haproxy restart
 sudo ufw enable
